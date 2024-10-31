@@ -23,52 +23,58 @@ int main()
     while (balance >= bid)
     {
         cout << "Ваш баланс: " << balance << endl << endl;
-        cout << "Что-бы продалжить игру нажмите 'y' \nЧто-бы закотнчить игру нажмите 'n'\nЧто-бы повысить ставку игры на 20 нажмите 'p': ";
+        cout << "Что-бы продалжить игру нажмите 'y' \nЧто-бы закотнчить игру нажмите 'n'\nЧто-бы повысить ставку игры на 20 нажмите 'p'\nЧто-бы повысить ставку игры на 20 нажмите 'l': ";
         cin >> enter;
         if (enter == 'y' || enter == 'Y')
         {
-
-            balance -= bid;
-            g = bid / 20;
-            symbol1 = symbol[rand() % 6];
-            symbol2 = symbol[rand() % 6];
-            symbol3 = symbol[rand() % 6];
-            cout << "*********************" << endl;
-            cout << "\t" << symbol1 << " " << symbol2 << " " << symbol3 << endl;
-            cout << "*********************" << endl;
-            if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[0])
+            if (bid != 0)
             {
-                cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 200 * g <<" монет" << endl << endl;
-                balance += 200 * g;
-            }
-            else if  (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[1])
-            {
-                cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 250 * g <<  " монет" << endl << endl;
-                balance += 250 * g;
-            }
-            else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[2])
-            {
-                cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 500 * g << " монет" << endl << endl;
-                balance += 500 * g;
-            }
-            else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[3])
-            {
-                cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 700 * g << " монет" << endl << endl;
-                balance += 700 * g;
-            }
-            else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[4])
-            {
-                cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 2700 * g << " монет" << endl << endl;
-                balance += 2700 * g;
-            }
-            else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[5])
-            {
-                cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 1000 * g << " монет" << endl << endl;
-                balance += 1000 * g;
+                balance -= bid;
+                g = bid / 20;
+                symbol1 = symbol[rand() % 6];
+                symbol2 = symbol[rand() % 6];
+                symbol3 = symbol[rand() % 6];
+                cout << "*********************" << endl;
+                cout << "\t" << symbol1 << " " << symbol2 << " " << symbol3 << endl;
+                cout << "*********************" << endl;
+                if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[0])
+                {
+                    cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 200 * g << " монет" << endl << endl;
+                    balance += 200 * g;
+                }
+                else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[1])
+                {
+                    cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 250 * g << " монет" << endl << endl;
+                    balance += 250 * g;
+                }
+                else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[2])
+                {
+                    cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 500 * g << " монет" << endl << endl;
+                    balance += 500 * g;
+                }
+                else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[3])
+                {
+                    cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 700 * g << " монет" << endl << endl;
+                    balance += 700 * g;
+                }
+                else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[4])
+                {
+                    cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 2700 * g << " монет" << endl << endl;
+                    balance += 2700 * g;
+                }
+                else if (symbol1 == symbol2 && symbol2 == symbol3 && symbol1 == symbol[5])
+                {
+                    cout << "Поздравляю! Вы поймали 3 одинаковых вам зачислено " << 1000 * g << " монет" << endl << endl;
+                    balance += 1000 * g;
+                }
+                else
+                {
+                    cout << "Увы вы проиграли" << endl << endl;
+                }
             }
             else
             {
-                cout << "Увы вы проиграли" << endl << endl;
+                cout << "Ваша ставка равна 0 повысть ставку" << endl;
             }
         }
         else if(enter == 'n' || enter == 'N')
@@ -88,6 +94,18 @@ int main()
             }
             cout << endl << "Cтавка равна " << bid << " монет" << endl;
         }
+        else if (enter == 'l' || enter == 'L')
+        {
+            if (bid == 0)
+            {
+                cout << "Ваша ставка равна 0 повысть ставку" << endl;
+            }
+            else
+            {
+                bid -= 20;
+            }
+            cout << endl << "Cтавка равна " << bid << " монет" << endl;
+        }
         else
         {
             cout << endl << "Error" <<
@@ -97,3 +115,5 @@ int main()
     if (balance <= bid)
     cout << "У вас заночились монеты для прокрута" ;
 }
+
+
